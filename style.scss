@@ -1,0 +1,155 @@
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #000000;
+
+window.Bar {
+    background: transparent;
+    color: $fg-color;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: "JetBrainsMono Nerd Font";
+
+
+    .bar-bg {
+        background: transparent;
+        border-radius: 8px;
+        margin: 2px;
+        padding: 0px 8px;
+        min-height: 0px;
+    }
+
+    button {
+        border-radius: 5px;
+        margin: 0px;
+        padding: 1px 3px;
+        min-height: 0px;
+    }
+
+    label {
+        padding: 0px 4px;
+     }     
+
+    button label {
+        padding: 0px;
+    }
+
+    .clock-label {
+    color: #fdfbd4;
+    }
+    
+
+button.ws-1 {
+    background-color: #358d8d;
+    color: #000000;
+}
+
+button.ws-2 {
+    background-color: #0a7172;
+    color: #000000;
+}
+
+button.ws-3 {
+    background-color: #005757;
+    color: #000000;
+}
+
+button.ws-4 {
+    background-color: #003d3e;
+    color: #000000;
+}
+
+button.ws-5 {
+    background-color: #005757;
+    color: #000000;
+}
+
+button.ws-6 {
+    background-color: #0a7172;
+    color: #000000;
+}
+
+button.ws-7 {
+    background-color: #358d8d;
+    color: #000000;
+}
+
+button.ws-8 {
+    background-color: #0a7172;
+    color: #000000;
+}
+
+button.ws-9 {
+    background-color: #005757;
+    color: #000000;
+}
+
+button.ws-10 {
+    background-color: #003d3e;
+    color: #000000;
+}
+
+
+button.wifi-btn {
+    padding-left: 2px;
+    padding-right: 6px;
+    background-color: #000000;
+    color: #358d8d;
+}
+
+button.bt-btn {
+    background-color: #000000;
+    color: #358d8d;
+}   
+
+
+button.brightness-btn {
+    background-color: #000000;
+    color: #fdfbd4;
+}   
+
+button.volume-btn {
+    background-color: #fdfbd4;
+    color: #000000;
+}
+
+scale {
+    min-height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+scale trough {
+    min-height: 4px;
+}
+
+scale slider {
+    min-height: 14px;
+    min-width: 14px;
+}
+
+revealer {
+    min-height: 0px;
+}
+
+button.battery-btn {
+    background-color: #000000;
+    color: #fdfbd4;
+}   
+
+button.ws-active {
+    background-color: #000000;
+    color: #358d8d;
+    font-size: 15px;
+}
+
+button.cpu-btn {
+    background-color: #000000;
+    color: #358d8d;
+}
+
+button.ram-btn {
+    background-color: #000000;
+    color: #358d8d;
+}   
+
+
+}
