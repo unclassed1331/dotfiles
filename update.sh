@@ -2,19 +2,24 @@
 cd ~/dotfiles || exit 1
 
 # Hyprland
-cp ~/.config/hypr/hyprland.lua .
-cp ~/.config/hypr/hyprpaper.conf .
-mkdir -p scripts
+mkdir -p Hyprland scripts
+cp ~/.config/hypr/hyprland.lua Hyprland/
 cp ~/.config/hypr/scripts/*.sh scripts/ 2>/dev/null
 
 # AGS bar
-cp ~/.config/ags/widget/Bar.tsx .
-cp ~/.config/ags/style.scss .
+mkdir -p AGS
+cp ~/.config/ags/widget/Bar.tsx AGS/
+cp ~/.config/ags/style.scss AGS/
 
 # SwayOSD
 mkdir -p swayosd
 cp ~/.config/swayosd/style.css swayosd/ 2>/dev/null
 cp ~/.config/swayosd/config.toml swayosd/ 2>/dev/null
+
+# Kitty
+mkdir -p kitty
+cp ~/.config/kitty/kitty.conf kitty/
+cp ~/.config/kitty/current-theme.conf kitty/
 
 git add .
 
