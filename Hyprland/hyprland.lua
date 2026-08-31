@@ -433,7 +433,26 @@ end
 hl.bind(mainMod .. " + Q", halfSize())
 hl.bind(mainMod .. " + W", restoreSize())
 
+--move window to last active workspace
+-- Keep new windows out of special workspaces unless they're meant to be there
+local lastNormalWorkspace = 1
+local specialWorkspaceApps = {
+    ["kitty-scratch"] = true,
+    ["org.gnome.Gnote"] = true,
+    ["org.kde.dolphin"] = true,
+}
 
+hl.on("workspace.active", function(ws)
+    if ws.id > 0 then
+        lastNormalWorkspace = ws.id
+    end
+end)
+
+hl.on("window.open", function(win)
+    if win.workspace and win.workspace.id < 0 and not specialWorkspaceApps[win.class] then
+        hl.dispatch(hl.dsp.window.move({ workspace = tostring(lastNormalWorkspace) }))
+    end
+end)
 
 
 -- Swap front/back window (bring next window to top)
@@ -472,6 +491,9 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+
+
 
 -- Glass-magnifier style cursor zoom
 local MAX_ZOOM = 3
