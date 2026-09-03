@@ -317,6 +317,8 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/reloa
 
 --Open Gnote
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-gnote.sh"))
+--open hyprpicker
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprpicker -a"))
 
 -- Vim-style focus movement
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -582,7 +584,7 @@ hl.window_rule({
 
     workspace = "special:dolphin",
     float     = true,
-    size      = "900 650",
+    size      = "750 500",
     center    = true,
 })
 
@@ -598,7 +600,7 @@ hl.window_rule({
 hl.window_rule({
     name  = "floating-border",
     match = { float = true },
-    border_color = " rgb(1a88a3) rgb(3da693)",
+    border_color = "rgba(3da693aa) rgba(1a88a3aa)",
 })
 
 
