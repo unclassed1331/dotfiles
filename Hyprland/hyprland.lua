@@ -103,7 +103,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("qs -c overview")
 end)
 
--- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+-- Windows, color and border size
 hl.config({
     general = {
         gaps_in  = 1,
@@ -128,7 +128,7 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 10,
+        rounding       = 4,
         rounding_power = 2,
 
         -- Change transparency of focused and unfocused windows
@@ -264,10 +264,14 @@ hl.config({
         follow_mouse = 1,
 
         sensitivity = 0.5, -- -1.0 - 1.0, 0 means no modification.
+       
+       touchpad = {
+    natural_scroll = false,
+    middle_button_emulation = true,
+    clickfinger_behavior = true,
+    tap_button_map = "lmr",
+},
 
-        touchpad = {
-            natural_scroll = false,
-        },
     },
 })
 
@@ -584,7 +588,7 @@ hl.window_rule({
 
     workspace = "special:dolphin",
     float     = true,
-    size      = "750 500",
+    size      = "900 500",
     center    = true,
 })
 
