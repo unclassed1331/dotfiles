@@ -17,6 +17,12 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
+--steam size
+hl.config({
+  xwayland = {
+    force_zero_scaling = true
+  }
+})
 
 ------------------
 ---- MONITORS ----
@@ -96,7 +102,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("ags run " .. os.getenv("HOME") .. "/.config/ags")
     hl.exec_cmd("swayosd-server")
+    hl.exec_cmd(os.getenv("HOME") .. "/.local/bin/hypr-random-wallpaper")
 end)
+
 
 --something for workspace overview
 hl.on("hyprland.start", function ()
@@ -144,9 +152,9 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 3,
-            passes    = 1,
-            vibrancy  = 0.1696,
+            size      = 4,
+            passes    = 2,
+            vibrancy  = 0.1969,
         },
     },
 
@@ -308,19 +316,23 @@ local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-dolphin.sh"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + Z", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu)) --zoom
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo()) --pseudo tiling
+hl.bind(mainMod .. " + L", hl.dsp.layout("togglesplit"))    -- dwindle only 
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
-
+--hyprpaper command for random background
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("kill -USR1 $(cat ~/.cache/hypr-random-wallpaper.pid)"))
 --Open Quickshell (Window Overview)
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("qs ipc -c overview call overview toggle"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/reload-overview.sh"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("qs ipc -c overview call overview toggle"))
+hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/reload-overview.sh"))
+--Open Signal via scratchpad
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-signal.sh"))
 
 --Open Gnote
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-gnote.sh"))
+
 --open hyprpicker
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprpicker -a"))
 
@@ -436,8 +448,8 @@ local function restoreSize()
     end
 end
 
-hl.bind(mainMod .. " + Q", halfSize())
-hl.bind(mainMod .. " + W", restoreSize())
+hl.bind(mainMod .. " + SHIFT + minus", halfSize())
+hl.bind(mainMod .. " + SHIFT + equal", restoreSize())
 
 --move window to last active workspace
 -- Keep new windows out of special workspaces unless they're meant to be there
@@ -559,9 +571,6 @@ hl.window_rule({
 })
 
 
-
-
-
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
@@ -569,6 +578,17 @@ hl.window_rule({
 --     no_anim = true,
 -- })
 -- overlayLayerRule:set_enabled(false)
+
+--Open Signal in a Scratchpad
+-- Open Signal Windowed
+hl.window_rule({
+    name      = "signal-float",
+    match     = { class = "signal" },
+    workspace = "special:signal silent",
+    float     = true,
+    size      = "625 862",
+    move      = "813 34",
+})
 
 --Open Gnote Windowed
 hl.window_rule({
@@ -581,7 +601,7 @@ hl.window_rule({
     center    = true,
 })
 
-
+--Open Dolphin Windowed
 hl.window_rule({
     name  = "dolphin-float",
     match = { class = "org.kde.dolphin" },
@@ -601,15 +621,22 @@ hl.window_rule({
     float = true,
 })
 
+--Color of a floating border
 hl.window_rule({
     name  = "floating-border",
     match = { float = true },
     border_color = "rgba(3da693aa) rgba(1a88a3aa)",
 })
 
-
+--Color of a tiled border
 hl.window_rule({
     name  = "tiled-border",
     match = { float = false },
     border_color = "rgba(9d4eddaa) rgba(008080aa)",
 })
+
+--Paste a special workspace to a normal workspace
+hl.bind(mainMod .. " + Q", function()
+    hl.dispatch(hl.dsp.window.move({ workspace = tostring(lastNormalWorkspace) }))
+    hl.dispatch(hl.dsp.window.float({ action = "unset" }))
+end)

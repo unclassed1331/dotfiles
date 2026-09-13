@@ -1,5 +1,5 @@
 #!/bin/bash
-if hyprctl clients | grep -q "class: org.kde.dolphin"; then
+if hyprctl clients -j | jq -e '.[] | select(.class=="org.kde.dolphin" and (.workspace.name=="special:dolphin"))' > /dev/null; then
     hyprctl dispatch 'hl.dsp.workspace.toggle_special("dolphin")'
 else
     dolphin &
