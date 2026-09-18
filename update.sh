@@ -1,9 +1,9 @@
 #!/bin/bash
 cd ~/dotfiles || exit 1
 
-# Hyprland
+# Hyprland (all config modules now, not just the main file)
 mkdir -p Hyprland scripts
-cp ~/.config/hypr/hyprland.lua Hyprland/
+cp ~/.config/hypr/*.lua Hyprland/
 cp ~/.config/hypr/scripts/*.sh scripts/ 2>/dev/null
 
 # AGS bar
