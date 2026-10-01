@@ -27,6 +27,8 @@ hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
 
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }))
 
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))

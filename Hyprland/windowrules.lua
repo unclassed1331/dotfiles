@@ -33,5 +33,10 @@ hl.window_rule({
     move = "20 monitor_h-120", float = true,
 })
 
+hl.window_rule({
+    name = "love2d-float", match = { class = "love" },
+    float = true, center = true,
+})
+
 hl.window_rule({ name = "floating-border", match = { float = true },  border_color = "rgba(3da693aa) rgba(1a88a3aa)" })
 hl.window_rule({ name = "tiled-border",    match = { float = false }, border_color = "rgba(9d4eddaa) rgba(008080aa)" })
