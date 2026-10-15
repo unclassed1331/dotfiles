@@ -23,6 +23,7 @@ function toggleTransparency()
     end
 end
 
+
 -- Shrink/restore active window (Alt+Shift+- / Alt+Shift+=)
 local originalGeometry = {}
 

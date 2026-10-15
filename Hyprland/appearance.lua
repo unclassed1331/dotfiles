@@ -17,23 +17,23 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 4,
-        rounding_power = 2,
+        rounding       = 3,
+        rounding_power = 3,
 
         active_opacity   = 1,
         inactive_opacity = 0.6, -- overridden live by the transparency toggle (scratchpad-logic.lua)
 
         shadow = {
             enabled      = true,
-            range        = 4,
-            render_power = 3,
+            range        = 2,
+            render_power = 2,
             color        = 0xee1a1a1a,
         },
 
         blur = {
             enabled  = true,
-            size     = 4,
-            passes   = 2,
+            size     = 2,
+            passes   = 1,
             vibrancy = 0.1969,
         },
     },

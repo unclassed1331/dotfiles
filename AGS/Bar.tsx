@@ -74,7 +74,7 @@ function WifiLabel() {
         tooltipText={bind(wifi, "ssid").as(ssid =>
             ssid ? `${ssid} (${wifi.strength}%)` : "Not connected"
         )}
-        onClicked={() => execAsync("nm-connection-editor").catch(print)}
+        onClicked={() => execAsync("systemsettings").catch(print)}
     >
         <label label={bind(wifi, "ssid").as(ssid => ssid ? "󰤨" : "󰤭")} />
     </button>
