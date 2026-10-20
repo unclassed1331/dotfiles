@@ -1,0 +1,31 @@
+configuration {
+	modes: "window,drun,run,filebrowser";
+	font: "Fira Code 12";
+
+    kb-remove-to-eol: "Control+Shift+e";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    kb-row-up: "Up,Control+p,Control+k";
+    kb-row-down: "Down,Control+n,Control+j";
+
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+
+    filebrowser {
+        directory: "";
+        directories-first: true;
+        sorting-method:    "name";
+        command: "xdg-open";
+    }
+}
+
+@theme "~/.config/rofi/mytheme"
+window {
+    /* golden ratio!?!? */
+    width: 38.2%;
+}
+
+listview {
+    lines:7;
+}

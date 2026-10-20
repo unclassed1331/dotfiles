@@ -1,0 +1,6 @@
+copr.fedorainfracloud.org/erikreider/swayosd
+copr.fedorainfracloud.org/heus-sueh/packages
+copr.fedorainfracloud.org/lionheartp/Hyprland
+copr.fedorainfracloud.org/phracek/PyCharm (disabled)
+copr.fedorainfracloud.org/solopasha/hyprland
+copr.fedorainfracloud.org/yalter/niri
